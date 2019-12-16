@@ -2,6 +2,7 @@ import React from "react";
 import { Platform, Text } from "react-native";
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
+import { createDrawerNavigator } from "react-navigation-drawer";
 
 // ---------- screens ----------
 
@@ -23,4 +24,38 @@ const AppNavigator = createStackNavigator({
   }
 });
 
-export default createAppContainer(AppNavigator);
+const MainNavigator = createDrawerNavigator(
+  {
+    Shop: {
+      screen: AppNavigator,
+      navigationOptions: {
+        drawerLabel: "Shop"
+      }
+    }
+    // Orders: {
+    //   screen: ,
+    //   navigationOptions: {
+    //     drawerLabel: "Orders"
+    //   }
+    // },
+    // Manage_Products: {
+    //   screen: ,
+    //   navigationOptions: {
+    //     drawerLabel: "Manage Products"
+    //   }
+    // }
+  }
+  // {
+  //   contentOptions: {
+  //     activeTintColor: colors.darkred,
+  //     inactiveTintColor: colors.lightred,
+  //     labelStyle: {
+  //       fontWeight: "bold"
+  //     }
+  //   }
+  // }
+);
+
+// ------
+
+export default createAppContainer(MainNavigator);

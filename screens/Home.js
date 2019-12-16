@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
 Home.navigationOptions = navigationData => {
   return {
     headerTitle: "shop",
-    headerRight: (
+    headerLeft: (
       <HeaderButtons HeaderButtonComponent={HeaderIcon}>
         <Item
           title="Menu"
@@ -50,6 +50,11 @@ Home.navigationOptions = navigationData => {
             navigationData.navigation.toggleDrawer();
           }}
         />
+      </HeaderButtons>
+    ),
+    headerRight: (
+      <HeaderButtons HeaderButtonComponent={HeaderIcon}>
+        <Item title="Menu" iconName="ios-cart" onPress={() => {}} />
       </HeaderButtons>
     )
   };

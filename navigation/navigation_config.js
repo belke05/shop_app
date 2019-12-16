@@ -21,6 +21,9 @@ const AppNavigator = createStackNavigator({
   },
   Details: {
     screen: Details
+  },
+  Cart: {
+    screen: Cart
   }
 });
 
@@ -31,19 +34,19 @@ const MainNavigator = createDrawerNavigator(
       navigationOptions: {
         drawerLabel: "Shop"
       }
+    },
+    Orders: {
+      screen: Orders,
+      navigationOptions: {
+        drawerLabel: "Orders"
+      }
+    },
+    Manage_Products: {
+      screen: Product_Management,
+      navigationOptions: {
+        drawerLabel: "Manage Products"
+      }
     }
-    // Orders: {
-    //   screen: ,
-    //   navigationOptions: {
-    //     drawerLabel: "Orders"
-    //   }
-    // },
-    // Manage_Products: {
-    //   screen: ,
-    //   navigationOptions: {
-    //     drawerLabel: "Manage Products"
-    //   }
-    // }
   }
   // {
   //   contentOptions: {

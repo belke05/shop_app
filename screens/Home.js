@@ -8,9 +8,23 @@ import { useSelector } from "react-redux";
 export default function Home(props) {
   const PRODUCTS = useSelector(state => state.products.availableproducts);
 
+  const onPressHandlerDetails = productId => {
+    props.navigation.navigate({
+      routeName: "Details",
+      params: {
+        productId: productId
+      }
+    });
+  };
+
   const renderProduct = itemData => {
     const { item } = itemData;
-    return <ProductContainer product={item} navigation={props.navigation} />;
+    return (
+      <ProductContainer
+        product={item}
+        onPressHandlerDetails={onPressHandlerDetails}
+      />
+    );
   };
 
   return (

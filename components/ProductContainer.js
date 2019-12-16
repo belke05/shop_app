@@ -12,13 +12,13 @@ export default function ProductContainer(props) {
         <CustomButton
           style={{ margin: 10 }}
           title="details"
-          onPressHandler={() => props.navigation.navigate("Details")}
+          onPressHandler={() => props.onPressHandlerDetails(product.id)}
         />
         <Text style={styles.price}>{product.price}$</Text>
         <CustomButton
           style={{ margin: 10 }}
           title="cart"
-          onPressHandler={() => props.navigation.navigate("Details")}
+          onPressHandler={() => {}}
         />
       </View>
     </View>

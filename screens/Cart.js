@@ -1,10 +1,16 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
+import { useSelector } from "react-redux";
+// import Modal from "../components/Modal";
 
-export default function Cart() {
+export default function Cart(props) {
+  const USERCART = useSelector(state => state.products.usercart);
+  const PRODUCTS_IN_CART = USERCART.products;
+  const TOTAL_PRICE = USERCART.totalprice;
+  console.log(PRODUCTS_IN_CART);
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <Text>{TOTAL_PRICE}</Text>
     </View>
   );
 }

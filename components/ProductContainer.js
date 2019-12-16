@@ -1,9 +1,24 @@
 import React from "react";
 import CustomButton from "./CustomButton";
-import { StyleSheet, Text, Dimensions, View, Image } from "react-native";
+import { update_cart } from "../redux_config/actions";
+import { StyleSheet, Text, Dimensions, View, Image, Alert } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function ProductContainer(props) {
+  const dispatch = useDispatch();
+
   const product = props.product;
+
+  const onPressHandler = () => {
+    dispatch(update_cart(product.id));
+    Alert.alert(
+      `${product.name} was added`,
+      "look in your cart for more details",
+      [{ text: "OK", onPress: () => console.log("OK Pressed") }],
+      { cancelable: false }
+    );
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{product.name}</Text>
@@ -20,7 +35,7 @@ export default function ProductContainer(props) {
         <CustomButton
           style={{ margin: 10 }}
           title="cart"
-          onPressHandler={() => {}}
+          onPressHandler={onPressHandler}
         />
       </View>
     </View>

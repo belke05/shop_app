@@ -6,13 +6,13 @@ import cart from "./cart";
 const StartState = {
   availableproducts: PRODUCTS,
   userproducts: PRODUCTS.filter(product => product.user_id === "u1"),
-  usercart: []
+  usercart: { products: [], totalprice: 0 }
 };
 
 export const productReducer = (state = StartState, action) => {
   return {
     userproducts: userproducts(state.userproducts, action),
-    availableproducts: availableproducts(state.availableproducts, action),
-    usercart: cart(state.usercart, action)
+    availableproducts: [...state.availableproducts],
+    usercart: cart(state.usercart, state.availableproducts, action)
   };
 };

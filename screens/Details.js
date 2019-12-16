@@ -1,16 +1,19 @@
 import React from "react";
 import { StyleSheet, Text, View, Image, Dimensions } from "react-native";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import CustomButton from "../components/CustomButton";
 
 export default function Detail(props) {
   const productId = props.navigation.getParam("productId");
-  console.log("prod id", productId);
+
   const PRODUCT = useSelector(state => {
     return state.products.availableproducts.find(
       product => product.id === productId
     );
   });
+
+  const dispatch = useDispatch();
+
   return (
     <View style={styles.container}>
       <Image style={styles.picture} source={{ uri: PRODUCT.picture_url }} />

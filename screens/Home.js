@@ -1,5 +1,5 @@
-import React from "react";
-import { StyleSheet, View, FlatList } from "react-native";
+import React, { useCallback, useEffect, useState } from "react";
+import { StyleSheet, View, FlatList, Alert } from "react-native";
 import ProductContainer from "../components/ProductContainer";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import HeaderIcon from "../components/HeaderIcon";
@@ -69,7 +69,15 @@ Home.navigationOptions = navigationData => {
     ),
     headerRight: (
       <HeaderButtons HeaderButtonComponent={HeaderIcon}>
-        <Item title="Menu" iconName="ios-cart" onPress={() => {}} />
+        <Item
+          title="Menu"
+          iconName="ios-cart"
+          onPress={() => {
+            navigationData.navigation.navigate({
+              routeName: "Cart"
+            });
+          }}
+        />
       </HeaderButtons>
     )
   };

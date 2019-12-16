@@ -1,6 +1,8 @@
 import React from "react";
-import { StyleSheet, Text, SafeAreaView, View, FlatList } from "react-native";
+import { StyleSheet, View, FlatList } from "react-native";
 import ProductContainer from "../components/ProductContainer";
+import { HeaderButtons, Item } from "react-navigation-header-buttons";
+import HeaderIcon from "../components/HeaderIcon";
 import { useSelector } from "react-redux";
 
 export default function Home(props) {
@@ -38,6 +40,17 @@ const styles = StyleSheet.create({
 
 Home.navigationOptions = navigationData => {
   return {
-    headerTitle: "shop"
+    headerTitle: "shop",
+    headerRight: (
+      <HeaderButtons HeaderButtonComponent={HeaderIcon}>
+        <Item
+          title="Menu"
+          iconName="ios-menu"
+          onPress={() => {
+            navigationData.navigation.toggleDrawer();
+          }}
+        />
+      </HeaderButtons>
+    )
   };
 };

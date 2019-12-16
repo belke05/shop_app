@@ -12,7 +12,9 @@ export default function ProductContainer(props) {
         <CustomButton
           style={{ margin: 10 }}
           title="details"
-          onPressHandler={() => props.onPressHandlerDetails(product.id)}
+          onPressHandler={() =>
+            props.onPressHandlerDetails(product.id, product.name)
+          }
         />
         <Text style={styles.price}>{product.price}$</Text>
         <CustomButton

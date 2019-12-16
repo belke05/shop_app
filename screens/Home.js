@@ -5,24 +5,27 @@ import { useSelector } from "react-redux";
 
 export default function Home(props) {
   const PRODUCTS = useSelector(state => state.products.availableproducts);
+
+  const renderProduct = itemData => {
+    const { item } = itemData;
+    return <ProductContainer product={item} navigation={props.navigation} />;
+  };
+
   return (
     <View style={styles.container}>
-      <Text>Home Screen</Text>
       <FlatList
-        contentContainerStyle={{ flexGrow: 1 }}
+        style={{ width: "100%" }}
         data={PRODUCTS}
-        renderItem={({ item }) => (
-          <ProductContainer product={item} navigation={props.navigation} />
-        )}
+        renderItem={renderProduct}
         keyExtractor={item => item.id}
       ></FlatList>
-      <Text>{PRODUCTS}--</Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
+    width: "100%",
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
@@ -32,3 +35,9 @@ const styles = StyleSheet.create({
     flex: 1
   }
 });
+
+Home.navigationOptions = navigationData => {
+  return {
+    headerTitle: "shop"
+  };
+};

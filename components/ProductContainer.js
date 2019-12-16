@@ -1,16 +1,26 @@
 import React from "react";
-import { StyleSheet, Text, Button, View, Image } from "react-native";
+import CustomButton from "./CustomButton";
+import { StyleSheet, Text, Dimensions, View, Image } from "react-native";
 
 export default function ProductContainer(props) {
   const product = props.product;
   return (
     <View style={styles.container}>
-      <Text>{product.name}</Text>
+      <Text style={styles.title}>{product.name}</Text>
       <Image style={styles.picture} source={{ uri: product.picture_url }} />
-      <Button
-        title="product details"
-        onPress={() => props.navigation.navigate("Details")}
-      />
+      <View style={styles.btnContainer}>
+        <CustomButton
+          style={{ margin: 10 }}
+          title="details"
+          onPressHandler={() => props.navigation.navigate("Details")}
+        />
+        <Text style={styles.price}>{product.price}$</Text>
+        <CustomButton
+          style={{ margin: 10 }}
+          title="cart"
+          onPressHandler={() => props.navigation.navigate("Details")}
+        />
+      </View>
     </View>
   );
 }
@@ -20,10 +30,24 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    marginVertical: 15
   },
   picture: {
-    width: 100,
-    height: 100
+    marginTop: 10,
+    width: Dimensions.get("screen").width * 0.6,
+    height: Dimensions.get("screen").height * 0.2
+  },
+  btnContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  price: {
+    textAlign: "center"
+  },
+  title: {
+    fontWeight: "bold",
+    fontSize: 18
   }
 });

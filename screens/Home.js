@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { StyleSheet, View, FlatList, Alert } from "react-native";
+import { StyleSheet, View, FlatList } from "react-native";
 import ProductContainer from "../components/ProductContainer";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import HeaderIcon from "../components/HeaderIcon";

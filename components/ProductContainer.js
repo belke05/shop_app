@@ -1,19 +1,29 @@
 import React from "react";
 import CustomButton from "./CustomButton";
-import { update_cart } from "../redux_config/actions";
+import { update_cart, remove_item_cart } from "../redux_config/actions";
 import { StyleSheet, Text, Dimensions, View, Image, Alert } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function ProductContainer(props) {
   const dispatch = useDispatch();
 
-  const product = props.product;
+  const { product, isUserList } = props;
 
-  const onPressHandler = () => {
+  const onPressHandlerCart = () => {
     dispatch(update_cart(product.id));
     Alert.alert(
       `${product.name} was added`,
       "look in your cart for more details",
+      [{ text: "OK", onPress: () => console.log("OK Pressed") }],
+      { cancelable: false }
+    );
+  };
+
+  const onPressHandlerDelete = () => {
+    dispatch(remove_item_cart(product.id));
+    Alert.alert(
+      `${product.name} was deleted`,
+      "product was deleted from the store",
       [{ text: "OK", onPress: () => console.log("OK Pressed") }],
       { cancelable: false }
     );
@@ -26,16 +36,20 @@ export default function ProductContainer(props) {
       <View style={styles.btnContainer}>
         <CustomButton
           style={{ margin: 10 }}
-          title="details"
+          title={isUserList ? "edit" : "details"}
           onPressHandler={() =>
-            props.onPressHandlerDetails(product.id, product.name)
+            isUserList
+              ? null
+              : props.onPressHandlerDetails(product.id, product.name)
           }
         />
         <Text style={styles.price}>{product.price}$</Text>
         <CustomButton
           style={{ margin: 10 }}
-          title="cart"
-          onPressHandler={onPressHandler}
+          title={isUserList ? "delete" : "cart"}
+          onPressHandler={() => {
+            isUserList ? onPressHandlerDelete() : onPressHandlerCart();
+          }}
         />
       </View>
     </View>

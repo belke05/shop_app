@@ -10,6 +10,7 @@ export default function Product_Management(props) {
     const { item } = itemData;
     return (
       <ProductContainer
+        isUserList={true}
         product={item}
         onPressHandlerDetails={() => {
           //onPressHandlerDetails

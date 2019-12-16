@@ -22,6 +22,7 @@ export default function Home(props) {
     const { item } = itemData;
     return (
       <ProductContainer
+        isUserList={false}
         product={item}
         onPressHandlerDetails={onPressHandlerDetails}
       />

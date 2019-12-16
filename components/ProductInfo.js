@@ -9,15 +9,9 @@ export default function ProductInfo(props) {
 
   const product = props.product;
   const qty = props.qty;
-  // const onPressHandler = () => {
-  //   dispatch(update_cart(product.id));
-  //   Alert.alert(
-  //     `${product.name} was added`,
-  //     "look in your cart for more details",
-  //     [{ text: "OK", onPress: () => console.log("OK Pressed") }],
-  //     { cancelable: false }
-  //   );
-  // };
+  const onDeleteHandler = () => {
+    dispatch(remove_item_cart(product.id));
+  };
 
   return (
     <View style={styles.container}>
@@ -25,7 +19,7 @@ export default function ProductInfo(props) {
         <Text style={styles.title}>#{qty}</Text>
         <Text style={styles.title}>{product.name}</Text>
         <Text style={styles.title}>{product.price}</Text>
-        <CustomButton title="delete" />
+        <CustomButton title="delete" onPressHandler={onDeleteHandler} />
       </View>
     </View>
   );

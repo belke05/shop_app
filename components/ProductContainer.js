@@ -20,7 +20,7 @@ export default function ProductContainer(props) {
   };
 
   const onPressHandlerDelete = () => {
-    dispatch(remove_item_cart(product.id));
+    dispatch(remove_item_cart(product.id)); // needs to be remove item cart
     Alert.alert(
       `${product.name} was deleted`,
       "product was deleted from the store",
